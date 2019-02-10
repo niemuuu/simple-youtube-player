@@ -1,4 +1,4 @@
-package main
+package play
 
 import (
 	"log"
@@ -6,13 +6,15 @@ import (
 	"os/exec"
 )
 
-func main() {
+// MpvPlay exec mpv-player
+func MpvPlay() {
 	var (
 		novid = "--no-video"
 		fs    = "--fs"
 		url   = "https://www.youtube.com/watch?v=HOlF5sW26Yw"
 	)
 	opts := []string{novid, fs, url}
+
 	cmd := exec.Command("mpv", opts...)
 
 	cmd.Stdout = os.Stdout
@@ -24,4 +26,3 @@ func main() {
 		log.Fatal(err)
 	}
 }
-
