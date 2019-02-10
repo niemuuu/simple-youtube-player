@@ -1,10 +1,10 @@
 package youtube
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/k0kubun/pp"
+	"github.com/pkg/errors"
 	"google.golang.org/api/googleapi/transport"
 	"google.golang.org/api/youtube/v3"
 )
@@ -29,8 +29,7 @@ func NewService() (*Service, error) {
 	}
 	svc, err := youtube.New(client)
 	if err != nil {
-		fmt.Println(err)
-		return nil, err
+		return nil, errors.Wrap(err, "failed to create YoutubeService")
 	}
 	return &Service{svc}, nil
 }
@@ -45,8 +44,7 @@ func (svc *Service) SearchItems(query string) error {
 
 	res, err := call.Do()
 	if err != nil {
-		fmt.Println(err)
-		return err
+		return errors.Wrap(err, "failed to call search method")
 	}
 
 	pp.Print(res)
