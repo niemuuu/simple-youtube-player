@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/niemuuu/yapla/pkg/play"
+	"github.com/niemuuu/yapla/pkg/mpv"
 	"github.com/spf13/cobra"
 )
 
@@ -12,7 +12,7 @@ var rootCmd = &cobra.Command{
 	Use:   "yapla",
 	Short: "Simple Youtube Audio Player",
 	Run: func(cmd *cobra.Command, args []string) {
-		play.MpvPlay()
+		mpv.Play()
 	},
 }
 
