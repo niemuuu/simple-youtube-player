@@ -1,19 +1,21 @@
 package mpv
 
 import (
-	"log"
 	"os"
 	"os/exec"
+
+	"github.com/pkg/errors"
+)
+
+const (
+	novid = "--no-video"
+	fs    = "--fs"
 )
 
 // Play audio
-func Play() {
-	var (
-		novid = "--no-video"
-		fs    = "--fs"
-		url   = "https://www.youtube.com/watch?v=HOlF5sW26Yw"
-	)
-	opts := []string{novid, fs, url}
+func Play(urls ...string) error {
+	opts := []string{novid, fs}
+	opts = append(opts, urls...)
 
 	cmd := exec.Command("mpv", opts...)
 
@@ -23,6 +25,8 @@ func Play() {
 
 	err := cmd.Run()
 	if err != nil {
-		log.Fatal(err)
+		return errors.Wrap(err, "error occured in mpv-player")
 	}
+
+	return nil
 }
