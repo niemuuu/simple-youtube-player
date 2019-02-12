@@ -5,6 +5,12 @@ import (
 	"google.golang.org/api/youtube/v3"
 )
 
+var (
+	maxResult    int64 = 3
+	safeSearch         = "none"
+	resourceType       = "video"
+)
+
 // SearchWithQuery returns SearchListResponse
 func (svc *Service) SearchWithQuery(query string) (*youtube.SearchListResponse, error) {
 	call := svc.Search.List("id,snippet").

@@ -10,10 +10,6 @@ import (
 
 const (
 	apiKey = "AIzaSyApJchZ-k6egHcMsnzvTAA144omq4d62fI"
-
-	maxResult    = 3
-	safeSearch   = "none"
-	resourceType = "video"
 )
 
 // Service is wrapping youtube.Service
