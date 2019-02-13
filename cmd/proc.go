@@ -34,6 +34,8 @@ func RunProcess(cmd *cobra.Command, args []string) {
 		return
 	}
 
+	Shuffle(list.Items)
+
 	urls, err := youtube.BuildURLsFromItems(list.Items)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
