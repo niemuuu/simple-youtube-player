@@ -13,10 +13,13 @@ var rootCmd = &cobra.Command{
 	Run:   func(cmd *cobra.Command, args []string) { RunProcess(cmd, args) },
 }
 
+func init() {
+	rootCmd.PersistentFlags().StringP("query", "q", "", "specify search query in youtube")
+	rootCmd.PersistentFlags().BoolP("random", "r", false, "whether yapla plays random")
+}
+
 // Execute root command
 func Execute() {
-	rootCmd.PersistentFlags().StringP("query", "q", "", "specify search query in youtube")
-
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)

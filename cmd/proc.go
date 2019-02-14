@@ -18,8 +18,13 @@ func RunProcess(cmd *cobra.Command, args []string) {
 		return
 	}
 	if strings.Trim(query, " ") == "" {
-		fmt.Fprint(os.Stderr, `Please specify the search query with '-q' option, like: [yapla -q "Hip Hop"]`)
+		fmt.Fprintln(os.Stderr, `Please specify the search query with '-q' option, like: [yapla -q "Hip Hop"]`)
 		return
+	}
+
+	rand, err := cmd.PersistentFlags().GetBool("random")
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "Failed to get flag which is random option")
 	}
 
 	youtubeSvc, err := youtube.NewService()
@@ -34,7 +39,9 @@ func RunProcess(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	Shuffle(list.Items)
+	if rand {
+		Shuffle(list.Items)
+	}
 
 	urls, err := youtube.BuildURLsFromItems(list.Items)
 	if err != nil {

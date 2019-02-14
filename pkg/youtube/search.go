@@ -6,7 +6,7 @@ import (
 )
 
 var (
-	maxResult    int64 = 3
+	maxResult    int64 = 50
 	safeSearch         = "none"
 	resourceType       = "video"
 )
