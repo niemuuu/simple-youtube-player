@@ -13,7 +13,7 @@ Please refer to [mpv official doc](https://mpv.io/installation/).
 
 ### Install yapla
 
-`go get -u github.com/niemuuu/yapla/...`
+`go get -u github.com/toxoxi/yapla/...`
 
 ## Usage
 Run yapla with the below command.
